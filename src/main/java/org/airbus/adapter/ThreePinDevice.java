@@ -5,3 +5,5 @@ public class ThreePinDevice {
          System.out.println("three pin device working...");
      }
 }
+
+
