@@ -1,9 +1,6 @@
-package org.airbus.builder;
+package org.airbus.Visitor;
 
-import org.airbus.Visitor.ICleanable;
-import org.airbus.Visitor.ICleaningProcedure;
-
-public class Toilet implements ICleanable {
+public class Touchscreen {
     private boolean isClean;
 
     public void accept(ICleaningProcedure cleaningProcedure) {

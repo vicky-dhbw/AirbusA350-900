@@ -1,11 +1,14 @@
 package org.airbus.builder;
 
 import org.airbus.Command.ServiceButton;
+import org.airbus.Visitor.ICleanable;
+import org.airbus.Visitor.ICleaningProcedure;
 
-public class OverheadCompartment {
+public class OverheadCompartment implements ICleanable {
     private final int seatRowNumber;
     private final BookingClass bookingClass;
     private final ServiceButton serviceButton;
+    private boolean isClean;
 
     public OverheadCompartment(int seatRowNumber,BookingClass bookingClass){
         this.seatRowNumber=seatRowNumber;
@@ -25,4 +28,17 @@ public class OverheadCompartment {
         return serviceButton;
     }
 
+
+
+    public void accept(ICleaningProcedure cleaningProcedure) {
+        cleaningProcedure.clean(this);
+    }
+
+    public boolean isClean() {
+        return isClean;
+    }
+
+    public void setClean(boolean isClean) {
+        this.isClean = isClean;
+    }
 }
