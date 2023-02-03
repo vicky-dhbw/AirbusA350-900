@@ -12,6 +12,12 @@ public class Section {
     protected int numberOfSeatRows;
     protected BookingClass bookingClass;
 
+    protected Toilet[] toilets;
+
+    public Section(int numberOfToilets){
+        toilets=new Toilet[numberOfToilets];
+    }
+
     public BookingClass getBookingClass() {
         return bookingClass;
     }
@@ -35,4 +41,7 @@ public class Section {
         this.steward = steward;
     }
 
+    public Toilet[] getToilets() {
+        return toilets;
+    }
 }

@@ -1,5 +1,7 @@
 package org.airbus.builder;
 
+import org.airbus.Configuration;
+
 public class Cabin {
 
     private final Section businessSection;

@@ -11,12 +11,17 @@ import org.airbus.Visitor.ICleaningProcedure;
 import org.airbus.builder.Seat;
 import org.airbus.Memento.CabinSmartApp;
 import org.airbus.Memento.SmartAppCareTaker;
+import org.airbus.builder.SeatRow;
+import org.airbus.builder.Toilet;
 import org.airbus.builder.USB3Port;
 import org.airbus.chainOfResponsibility.*;
 import org.airbus.composite.composite;
 import org.airbus.proxy.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -99,13 +104,54 @@ public class Main {
         authorizedPerson.enterCabin();
         authorizedPerson.exitCabin();
 
+
         //Visitor
 
-        ICleaningProcedure cleaningProcedure=new CleaningProcedure();
-        ICleanable seat = new Seat();
-        seat.accept(cleaningProcedure);
+        ArrayList<ICleanable> cleaningList = new ArrayList<>();
 
-    }
+        List<SeatRow> seatRowsBusiness = flightA350_900.getCabin().getBusinessSection().getSeatRows();
+        List<SeatRow> seatRowsPremiumEconomy = flightA350_900.getCabin().getPremiumEconomySection().getSeatRows();
+        List<SeatRow> seatRowsEconomy = flightA350_900.getCabin().getEconomySection().getSeatRows();
+
+        Toilet[] toiletsBusiness = flightA350_900.getCabin().getBusinessSection().getToilets();
+        Toilet[] toiletsEconomy = flightA350_900.getCabin().getEconomySection().getToilets();
+
+
+
+
+        for (SeatRow seatRow : seatRowsBusiness) {
+            cleaningList.addAll(Arrays.asList(seatRow.getSeats()));
+            cleaningList.addAll(Arrays.asList(seatRow.getLeftOverheadCompartment()));
+            cleaningList.addAll(Arrays.asList(seatRow.getRightOverheadCompartment()));
+        }
+      /*  for (Toilet toilet : toiletsBusiness) {
+            cleaningList.add(toilet);
+        }*/
+
+           // cleaningList.addAll(List.of(toiletsBusiness));
+
+        for (SeatRow seatRow : seatRowsPremiumEconomy) {
+            cleaningList.addAll(Arrays.asList(seatRow.getSeats()));
+            cleaningList.add(seatRow.getLeftOverheadCompartment());
+            cleaningList.add(seatRow.getRightOverheadCompartment());
+        }
+        for (SeatRow seatRow : seatRowsEconomy) {
+            cleaningList.addAll(Arrays.asList(seatRow.getSeats()));
+            cleaningList.add(seatRow.getLeftOverheadCompartment());
+            cleaningList.add(seatRow.getRightOverheadCompartment());
+        }
+
+        //cleaningList.addAll(Arrays.asList(toiletsEconomy));
+
+        for (Toilet toilet : toiletsEconomy) {
+            cleaningList.add(toilet);
+        }
+        ICleaningProcedure cleaningProcedure = new CleaningRobot();
+
+
+        for (ICleanable clean : cleaningList) {
+            clean.accept(cleaningProcedure);
+        }
 
     private static List<Service> buildServiceList(){
         List<Service> services=new ArrayList<>();

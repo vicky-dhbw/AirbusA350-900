@@ -6,11 +6,13 @@ import java.util.List;
 
 public class BusinessSection extends Section {
 
-    private Toilet[] toilets;
-
     public void setNumberOfSeatRows(int numberOfSeatRows) {
         this.numberOfSeatRows=numberOfSeatRows;
         toilets=new Toilet[Configuration.INSTANCE.numberOfToiletsInBusinessSection];
+        for(int i=0;i<Configuration.INSTANCE.numberOfToiletsInBusinessSection;i++){
+            toilets[i]=new Toilet();
+        }
+
     }
 
     public Toilet[] getToilets() {
