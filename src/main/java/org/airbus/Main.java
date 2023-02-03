@@ -3,6 +3,9 @@ package org.airbus;
 import org.airbus.Command.IServiceCommand;
 import org.airbus.Command.ServiceButton;
 import org.airbus.Command.ServiceCommand;
+import org.airbus.Mediator.AuthorizedPerson;
+import org.airbus.Mediator.CabinDoor;
+import org.airbus.Mediator.DoorMediator;
 import org.airbus.builder.USB3Port;
 import org.airbus.chainOfResponsibility.*;
 import org.airbus.composite.composite;
@@ -38,7 +41,7 @@ public class Main {
         proxyEntertainmentSystem.shutDown();
         proxyEntertainmentSystem.setUser(user3);
         proxyEntertainmentSystem.shutDown();
-        proxyEntertainmentSystem.logIn(user2.getName(),user2.getPasswordForEntertainmentSystem());
+       // proxyEntertainmentSystem.logIn(user2.getName(),user2.getPasswordForEntertainmentSystem());
 
         List<Service> services=buildServiceList();
         ResponsibleCrewMember skyMarshal=new SkyMarshal();
@@ -67,6 +70,17 @@ public class Main {
         ServiceButton button1=flightA350_900.getCabin().getPremiumEconomySection().getSeatRows().get(1).getOverheadCompartment().getServiceButton();
         button1.setCommand(serviceCommand1);
         button1.pressButton();
+
+        //Mediator
+
+        CabinDoor firstDoor = new CabinDoor();
+        CabinDoor secondDoor = new CabinDoor();
+        DoorMediator doorMediator = new DoorMediator(firstDoor, secondDoor);
+        AuthorizedPerson authorizedPerson = new AuthorizedPerson(doorMediator);
+
+        authorizedPerson.enterCabin();
+        authorizedPerson.exitCabin();
+
 
 
     }

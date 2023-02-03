@@ -1,11 +1,15 @@
 package org.airbus.composite;
 
+import org.airbus.Mediator.Mediator;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CrewMember implements ICrewMember{
     private final String name;
     private final List<ICrewMember> crewMembers = new ArrayList<>();
+
+
 
     public CrewMember(String name) {
         this.name = name;
@@ -31,5 +35,26 @@ public class CrewMember implements ICrewMember{
             crewMember.print();
         }
     }
+
+
+
+    private Mediator mediator;
+
+    public CrewMember(Mediator mediator, String name) {
+        this.mediator = mediator;
+        this.name = name;
+    }
+
+    public void enter() {
+        System.out.println(name + " enters the plane");
+        mediator.enter();
+    }
+
+    public void exit() {
+        System.out.println(name + " exits the plane");
+        mediator.exit();
+    }
+
+
 
 }
