@@ -15,8 +15,8 @@ public class SeatRow {
     }
 
     public SeatRow(Section section, int seatRowNumber, SeatColumn[] seatColumnNames){
-        rightOverheadCompartment=new OverheadCompartment();
-        leftOverheadCompartment=new OverheadCompartment();
+        rightOverheadCompartment=new OverheadCompartment(seatRowNumber,section.getBookingClass());
+        leftOverheadCompartment=new OverheadCompartment(seatRowNumber,section.getBookingClass());
 
         this.seatRowNumber=seatRowNumber;
 

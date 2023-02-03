@@ -9,6 +9,16 @@ public class Section {
     protected Steward steward;
     protected List<SeatRow> seatRows;
     protected int numberOfSeatRows;
+    protected BookingClass bookingClass;
+
+    public BookingClass getBookingClass() {
+        return bookingClass;
+    }
+
+    public void setBookingClass(BookingClass bookingClass) {
+        this.bookingClass = bookingClass;
+    }
+
     public List<SeatRow> getSeatRows() {
         return seatRows;
     }

@@ -25,6 +25,7 @@ public class Cabin {
 
         public Builder businessSection(int[] rowNumbers, SeatColumn[] seatColumns){
             businessSection=new BusinessSection();
+            businessSection.setBookingClass(BookingClass.B);
             System.out.println("creating BUSINESS section ------");
             RowCreator.createRow(businessSection,rowNumbers,seatColumns);
 
@@ -32,6 +33,7 @@ public class Cabin {
         }
         public Builder premiumEconomySection(int[] rowNumbers,SeatColumn[] seatColumns){
             premiumEconomySection=new PremiumEconomySection();
+            premiumEconomySection.setBookingClass(BookingClass.P);
             System.out.println("creating PREMIUM ECONOMY section ------");
             RowCreator.createRow(premiumEconomySection,rowNumbers,seatColumns);
 
@@ -44,6 +46,7 @@ public class Cabin {
                                       int[] rowNumbers5,SeatColumn[] seatColumns5)
         {
             economySection=new EconomySection();
+            economySection.setBookingClass(BookingClass.E);
             System.out.println("creating ECONOMY section ------");
             RowCreator.createRow(economySection,rowNumbers1,seatColumns1);
             RowCreator.createRow(economySection,rowNumbers2,seatColumns2);
