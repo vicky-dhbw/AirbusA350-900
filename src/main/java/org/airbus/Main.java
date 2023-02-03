@@ -1,6 +1,7 @@
 package org.airbus;
 
 import org.airbus.Command.IServiceCommand;
+import org.airbus.Command.ServiceButton;
 import org.airbus.Command.ServiceCommand;
 import org.airbus.builder.USB3Port;
 import org.airbus.chainOfResponsibility.*;
@@ -52,13 +53,21 @@ public class Main {
         flightA350_900.getCabin().getEconomySection().setSteward(steward3);
 
         IServiceCommand serviceCommand=new ServiceCommand(steward1);
+        IServiceCommand serviceCommand1=new ServiceCommand(steward2);
 
 
         for (Service service:services){
             steward1.executeResponsibility(service);
         }
 
-        flightA350_900.getCabin().getBusinessSection().getSeatRows().get(1).getRightOverheadCompartment()
+        ServiceButton button=flightA350_900.getCabin().getBusinessSection().getSeatRows().get(1).getRightOverheadCompartment().getServiceButton();
+        button.setCommand(serviceCommand);
+        button.pressButton();
+
+        ServiceButton button1=flightA350_900.getCabin().getPremiumEconomySection().getSeatRows().get(1).getOverheadCompartment().getServiceButton();
+        button1.setCommand(serviceCommand1);
+        button1.pressButton();
+
 
     }
 

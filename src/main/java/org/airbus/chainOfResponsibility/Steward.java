@@ -8,6 +8,7 @@ public class Steward extends ResponsibleCrewMember{
     private App app;
     public Steward(ResponsibleCrewMember successor){
         setSuccessor(successor);
+        app=new App();
     }
     public Steward(){
 

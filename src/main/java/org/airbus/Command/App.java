@@ -23,6 +23,6 @@ public class App {
     }
 
     public void printCommand(){
-        System.out.println("call from row number: "+serviceRowNumber+ " of booking class: "+bookingClass);
+        System.out.println("call from row number: "+serviceRowNumber+ " of booking class: "+bookingClass.toString());
     }
 }

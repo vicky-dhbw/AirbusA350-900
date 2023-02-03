@@ -5,7 +5,7 @@ import org.airbus.Command.ServiceButton;
 public class OverheadCompartment {
     private final int seatRowNumber;
     private final BookingClass bookingClass;
-    private ServiceButton serviceButton;
+    private final ServiceButton serviceButton;
 
     public OverheadCompartment(int seatRowNumber,BookingClass bookingClass){
         this.seatRowNumber=seatRowNumber;

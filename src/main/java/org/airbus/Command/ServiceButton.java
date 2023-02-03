@@ -34,6 +34,7 @@ public class ServiceButton {
     }
 
     public void pressButton(){
-        command.callCommand();
+        System.out.println();
+        command.callCommand(seatRowNumber,bookingClass);
     }
 }
