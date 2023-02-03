@@ -6,6 +6,9 @@ import org.airbus.Command.ServiceCommand;
 import org.airbus.Mediator.AuthorizedPerson;
 import org.airbus.Mediator.CabinDoor;
 import org.airbus.Mediator.DoorMediator;
+import org.airbus.Visitor.ICleanable;
+import org.airbus.Visitor.ICleaningProcedure;
+import org.airbus.builder.Seat;
 import org.airbus.Memento.CabinSmartApp;
 import org.airbus.Memento.SmartAppCareTaker;
 import org.airbus.builder.USB3Port;
@@ -96,7 +99,11 @@ public class Main {
         authorizedPerson.enterCabin();
         authorizedPerson.exitCabin();
 
+        //Visitor
 
+        ICleaningProcedure cleaningProcedure=new CleaningProcedure();
+        ICleanable seat = new Seat();
+        seat.accept(cleaningProcedure);
 
     }
 
