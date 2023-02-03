@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 public abstract class UserProxy implements IAccess {
 
-    private final EntertainmentSystemImpl entertainmentSystem;
+    private EntertainmentSystemImpl entertainmentSystem;
 
     public UserProxy(String username, String password) {
         try {
