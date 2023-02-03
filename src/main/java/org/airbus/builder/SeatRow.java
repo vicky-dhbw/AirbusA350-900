@@ -8,8 +8,13 @@ public class SeatRow {
     private int numberOfColumns;
     private int seatRowNumber;
     private SeatColumn[] seatColumnNames;
+
     private final OverheadCompartment rightOverheadCompartment;
     private final OverheadCompartment leftOverheadCompartment;
+    public OverheadCompartment getRightOverheadCompartment() {
+        return rightOverheadCompartment;
+    }
+
     public Seat[] getSeats() {
         return seats;
     }

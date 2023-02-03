@@ -1,5 +1,7 @@
 package org.airbus;
 
+import org.airbus.Command.IServiceCommand;
+import org.airbus.Command.ServiceCommand;
 import org.airbus.builder.USB3Port;
 import org.airbus.chainOfResponsibility.*;
 import org.airbus.composite.composite;
@@ -15,19 +17,19 @@ public class Main {
         composite.Crew();
 
         IEntertainmentSystemUser user1=new Passenger();
+
         Purser user2=new Purser();
         user2.setName("purser");
-        user2.setPasswordForEntertainmentSystem("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
-        IEntertainmentSystemUser user3=new ServiceTechnician();
-        ServiceTechnician serviceTechnician=new ServiceTechnician();
-        serviceTechnician.setName("serviceTechnician");
-        //serviceTechnician.getPasswordForEntertainmentSystem("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
+        user2.setPasswordForEntertainmentSystem("1234");
+
+
+        ServiceTechnician user3=new ServiceTechnician();
+        user3.setName("serviceTechnician");
+        user3.setPasswordForEntertainmentSystem("12345");
         
 
 
         ProxyEntertainmentSystem proxyEntertainmentSystem=new ProxyEntertainmentSystem(user1);
-        proxyEntertainmentSystem.reset();
-
 
         proxyEntertainmentSystem.setUser(user2);
         proxyEntertainmentSystem.shutDown();
@@ -45,17 +47,18 @@ public class Main {
         Steward steward2=new Steward(purser);
         Steward steward3=new Steward(purser);
 
-
         flightA350_900.getCabin().getBusinessSection().setSteward(steward1);
         flightA350_900.getCabin().getPremiumEconomySection().setSteward(steward2);
         flightA350_900.getCabin().getEconomySection().setSteward(steward3);
+
+        IServiceCommand serviceCommand=new ServiceCommand(steward1);
+
 
         for (Service service:services){
             steward1.executeResponsibility(service);
         }
 
-
-
+        flightA350_900.getCabin().getBusinessSection().getSeatRows().get(1).getRightOverheadCompartment()
 
     }
 

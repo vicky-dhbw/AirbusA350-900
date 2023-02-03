@@ -2,6 +2,8 @@ package org.airbus.builder;
 
 import org.airbus.Configuration;
 
+import java.util.List;
+
 public class BusinessSection extends Section {
 
     private Toilet[] toilets;
@@ -13,5 +15,9 @@ public class BusinessSection extends Section {
 
     public Toilet[] getToilets() {
         return toilets;
+    }
+
+    public List<SeatRow> getSeatRows() {
+        return super.getSeatRows();
     }
 }

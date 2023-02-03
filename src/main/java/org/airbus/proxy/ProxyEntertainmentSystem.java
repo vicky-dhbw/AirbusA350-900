@@ -7,6 +7,7 @@ public class ProxyEntertainmentSystem implements IEntertainmentSystem{
     public ProxyEntertainmentSystem(IEntertainmentSystemUser user){
         entertainmentSystem=new EntertainmentSystem();
         this.user=user;
+        entertainmentSystem.setUser(user);
     }
     @Override
     public void selectTitle(String title, String type) {

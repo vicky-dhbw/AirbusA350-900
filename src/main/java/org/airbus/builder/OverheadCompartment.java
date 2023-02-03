@@ -25,7 +25,4 @@ public class OverheadCompartment {
         return serviceButton;
     }
 
-    public void setServiceButton(ServiceButton serviceButton) {
-        this.serviceButton = serviceButton;
-    }
 }

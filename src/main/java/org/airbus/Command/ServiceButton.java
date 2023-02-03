@@ -6,6 +6,8 @@ public class ServiceButton {
     private int seatRowNumber;
     private BookingClass bookingClass;
 
+    private IServiceCommand command;
+
     public ServiceButton(int seatRowNumber,BookingClass bookingClass){
         this.seatRowNumber=seatRowNumber;
         this.bookingClass=bookingClass;
@@ -25,5 +27,13 @@ public class ServiceButton {
 
     public void setBookingClass(BookingClass bookingClass) {
         this.bookingClass = bookingClass;
+    }
+
+    public void setCommand(IServiceCommand command) {
+        this.command = command;
+    }
+
+    public void pressButton(){
+        command.callCommand();
     }
 }
