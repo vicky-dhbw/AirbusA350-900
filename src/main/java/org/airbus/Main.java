@@ -6,6 +6,8 @@ import org.airbus.Command.ServiceCommand;
 import org.airbus.Mediator.AuthorizedPerson;
 import org.airbus.Mediator.CabinDoor;
 import org.airbus.Mediator.DoorMediator;
+import org.airbus.Memento.CabinSmartApp;
+import org.airbus.Memento.SmartAppCareTaker;
 import org.airbus.builder.USB3Port;
 import org.airbus.chainOfResponsibility.*;
 import org.airbus.composite.composite;
@@ -70,6 +72,19 @@ public class Main {
         ServiceButton button1=flightA350_900.getCabin().getPremiumEconomySection().getSeatRows().get(1).getOverheadCompartment().getServiceButton();
         button1.setCommand(serviceCommand1);
         button1.pressButton();
+
+        SmartAppCareTaker smartAppCareTaker=new SmartAppCareTaker();
+        CabinSmartApp smartApp=new CabinSmartApp();
+
+        smartAppCareTaker.setMemento(smartApp.save());
+        smartApp.print();
+
+        smartApp.setTemperatureInCelsius(25);
+        smartApp.setAntiJetLagLight(false);
+
+        smartApp.print();
+        smartApp.restore(smartAppCareTaker.getMemento());
+        smartApp.print();
 
         //Mediator
 
