@@ -1,4 +1,4 @@
 package org.airbus.chainOfResponsibility;
 
-public class coR {
+public class WishService extends Service{
 }
