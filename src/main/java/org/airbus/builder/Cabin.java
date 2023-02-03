@@ -1,6 +1,7 @@
 package org.airbus.builder;
 
 public class Cabin {
+
     private final Section businessSection;
     private final Section premiumEconomySection;
     private final Section economySection;
@@ -8,6 +9,17 @@ public class Cabin {
         businessSection= builder.businessSection;
         premiumEconomySection= builder.premiumEconomySection;
         economySection= builder.economySection;
+    }
+    public Section getBusinessSection() {
+        return businessSection;
+    }
+
+    public Section getPremiumEconomySection() {
+        return premiumEconomySection;
+    }
+
+    public Section getEconomySection() {
+        return economySection;
     }
 
     public void print(){

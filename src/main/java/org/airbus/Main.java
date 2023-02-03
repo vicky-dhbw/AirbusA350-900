@@ -15,8 +15,15 @@ public class Main {
         composite.Crew();
 
         IEntertainmentSystemUser user1=new Passenger();
-        IEntertainmentSystemUser user2=new Purser();
+        Purser user2=new Purser();
+        user2.setName("purser");
+        user2.setPasswordForEntertainmentSystem("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
         IEntertainmentSystemUser user3=new ServiceTechnician();
+        ServiceTechnician serviceTechnician=new ServiceTechnician();
+        serviceTechnician.setName("serviceTechnician");
+        //serviceTechnician.getPasswordForEntertainmentSystem("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
+        
+
 
         ProxyEntertainmentSystem proxyEntertainmentSystem=new ProxyEntertainmentSystem(user1);
         proxyEntertainmentSystem.reset();
@@ -28,14 +35,23 @@ public class Main {
         proxyEntertainmentSystem.shutDown();
         proxyEntertainmentSystem.setUser(user3);
         proxyEntertainmentSystem.shutDown();
+        proxyEntertainmentSystem.logIn(user2.getName(),user2.getPasswordForEntertainmentSystem());
 
         List<Service> services=buildServiceList();
         ResponsibleCrewMember skyMarshal=new SkyMarshal();
         ResponsibleCrewMember purser=new Purser(skyMarshal);
-        ResponsibleCrewMember steward=new Steward(purser);
+
+        Steward steward1=new Steward(purser);
+        Steward steward2=new Steward(purser);
+        Steward steward3=new Steward(purser);
+
+
+        flightA350_900.getCabin().getBusinessSection().setSteward(steward1);
+        flightA350_900.getCabin().getPremiumEconomySection().setSteward(steward2);
+        flightA350_900.getCabin().getEconomySection().setSteward(steward3);
 
         for (Service service:services){
-            steward.executeResponsibility(service);
+            steward1.executeResponsibility(service);
         }
 
 

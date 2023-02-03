@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Section {
+
     protected Steward steward;
     protected List<SeatRow> seatRows;
     protected int numberOfSeatRows;
@@ -25,7 +26,13 @@ public class Section {
 
     public Section(){
         seatRows=new ArrayList<>();
-        steward=new Steward();
+    }
+    public Steward getSteward() {
+        return steward;
+    }
+
+    public void setSteward(Steward steward) {
+        this.steward = steward;
     }
 
 }
