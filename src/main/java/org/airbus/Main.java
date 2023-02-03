@@ -3,6 +3,8 @@ package org.airbus;
 import org.airbus.Command.IServiceCommand;
 import org.airbus.Command.ServiceButton;
 import org.airbus.Command.ServiceCommand;
+import org.airbus.Memento.CabinSmartApp;
+import org.airbus.Memento.SmartAppCareTaker;
 import org.airbus.builder.USB3Port;
 import org.airbus.chainOfResponsibility.*;
 import org.airbus.composite.composite;
@@ -68,6 +70,19 @@ public class Main {
         button1.setCommand(serviceCommand1);
         button1.pressButton();
 
+
+        SmartAppCareTaker smartAppCareTaker=new SmartAppCareTaker();
+        CabinSmartApp smartApp=new CabinSmartApp();
+
+        smartAppCareTaker.setMemento(smartApp.save());
+        smartApp.print();
+
+        smartApp.setTemperatureInCelsius(25);
+        smartApp.setAntiJetLagLight(false);
+
+        smartApp.print();
+        smartApp.restore(smartAppCareTaker.getMemento());
+        smartApp.print();
 
     }
 
