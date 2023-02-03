@@ -1,13 +1,5 @@
 package org.airbus.adapter;
 
-public class Device implements IDevice{
-    @Override
-    public void twoPinPlugIn() {
+public class Device{
 
-    }
-
-    @Override
-    public void usb3PlugIn() {
-
-    }
 }

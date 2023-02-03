@@ -1,9 +1,9 @@
 package org.airbus.builder;
 
-public class USB3Port implements ICharge {
+import org.airbus.adapter.*;
 
-    @Override
-    public void charge() {
-        System.out.println("charging gadget....");
+public class USB3Port{
+    public void charge(IUSBPlugIn usbPlugInDevice) {
+        usbPlugInDevice.usb3PlugIn();
     }
 }

@@ -1,10 +1,6 @@
 package org.airbus.adapter;
 
-public class USBXTAdapter extends USBXTDevice implements IDevice{
-    @Override
-    public void twoPinPlugIn() {
-
-    }
+public class USBXTAdapter extends USBXTDevice implements IUSBPlugIn{
 
     @Override
     public void usb3PlugIn() {

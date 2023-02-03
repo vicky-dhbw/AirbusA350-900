@@ -1,6 +1,6 @@
 package org.airbus.adapter;
 
-public class USBXTDevice {
+public class USBXTDevice extends Device{
     public void usbXTPlugIn(){
         System.out.println();
     }

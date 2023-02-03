@@ -1,5 +1,9 @@
 package org.airbus.builder;
 
-public class TwoPinSocket{
+import org.airbus.adapter.IPinPlugIn;
 
+public class TwoPinSocket{
+    public void charge(IPinPlugIn pinPlugInDevice) {
+        pinPlugInDevice.twoPinPlugIn();
+    }
 }

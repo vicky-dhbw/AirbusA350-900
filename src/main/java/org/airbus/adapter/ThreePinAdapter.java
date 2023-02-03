@@ -1,13 +1,8 @@
 package org.airbus.adapter;
 
-public class ThreePinAdapter extends ThreePinDevice implements IDevice{
+public class ThreePinAdapter extends ThreePinDevice implements IPinPlugIn{
     @Override
     public void twoPinPlugIn() {
         threePinPlugIn();
-    }
-
-    @Override
-    public void usb3PlugIn() {
-
     }
 }
