@@ -29,8 +29,8 @@ public class Pilot implements ICrewMember{
 
     public void print() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("{Pilot: name=" + name + "}");
-        System.out.println(stringBuilder.toString());
+        stringBuilder.append("Pilot: name = ").append(name);
+        System.out.println(stringBuilder);
         for (ICrewMember crewMember : crewMembers) {
             crewMember.print();
         }

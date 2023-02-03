@@ -2,11 +2,11 @@ package org.airbus.composite;
 
 public class composite {
     public static void Crew(){
-     ICrewMember firtOfficer = new Pilot("First Officer");
+     ICrewMember firstOfficer = new Pilot("First Officer");
      ICrewMember purser = new CrewMember("Purser");
 
      ICrewMember captain = new Pilot("Captain");
-     captain.add(firtOfficer);
+     captain.add(firstOfficer);
      captain.add(purser);
 
      ICrewMember flightAttendant01 = new CrewMember("Flight Attendant01");
@@ -23,6 +23,7 @@ public class composite {
         purser.add(flightAttendant05);
         purser.add(flightAttendant06);
 
-        purser.print();
+        captain.print();
+        //purser.print();
     }
 }
